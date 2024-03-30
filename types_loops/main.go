@@ -8,6 +8,17 @@ import ("fmt"
 		return 30
 	   }
 
+	   type ChargeSession struct {
+		id    string
+		watts int
+		vin   string
+	   }
+	   
+	   func (cs *ChargeSession) Charge(f int) {
+		cs.watts = cs.watts + f
+	   
+	   }
+
 func main() {
  fmt.Println("Review Go Data Types")
 
@@ -104,4 +115,10 @@ if x := getValue(); x >= limit {
 } else {
  fmt.Println("Value", x, "is less", limit)
 }
+
+	// defer
+	defer fmt.Println("Deferred print")
+	cs := ChargeSession{"1111", 410, "UNKNOWN"}
+	cs.Charge(10)
+	fmt.Println(cs.watts)
 }
